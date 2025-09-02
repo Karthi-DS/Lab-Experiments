@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function loadData(){
+            let res = localStorage.getItem("formData");
+            res = JSON.parse(res);
+            const name  = document.getElementById("name");
+            if(res.name){
+            name.innerHTML += res.name;
+            name.innerHTML += " from "+ res.native;
+            }else{
+                name.innerHTML="No data submitted"
+            }
+        }
+        window.onload = loadData;
+    </script>
+    <style>
+        .welcomeDiv{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome{
+            background-color: wheat;
+            color: darkgrey;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcomeDiv">
+    <div class="welcome">
+        <h1>
+        Welcome to PSG College of Technology
+        </h1>
+    </div>
+    <h1 id="name">Hello </h1>
+    </div>
+</body>
+</html>
