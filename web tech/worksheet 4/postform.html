@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function loadData(){
+            let res = localStorage.getItem("formData");
+            res = JSON.parse(res);
+            const name  = document.getElementById("name");
+            if(res.fname){
+            name.innerHTML += res.fname;
+            }else{
+                name.innerHTML="No data submitted"
+            }
+            const instahours = document.getElementById("instahours");
+            instahours.innerText = res.instahours;
+            const youtubehours = document.getElementById("youtubehours");
+            youtubehours.innerText = res.youtubehours;
+            const safeinsta = document.getElementById("instachecker");
+            if(Number(res.instahours)>3){
+                safeinsta.innerHTML = "you are not safe with insta"
+            }else{
+                safeinsta.innerHTML = "you are safe with insta"
+
+            }
+            const safeyoutube = document.getElementById("youtubechecker");
+            if(Number(res.youtubehours)>3){
+                safeinsta.innerHTML = "you are not safe with youtube"
+            }else{
+                safeinsta.innerHTML = "you are safe with youtube"
+
+            }
+        }
+        window.onload = loadData;
+    </script>
+    <style>
+        table,tr,td,th{
+            border: 1px solid black;
+        }
+    </style>
+    <style>
+        .welcomeDiv{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome{
+            background-color: wheat;
+            color: darkgrey;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcomeDiv">
+    <div class="welcome">
+        <h1>
+        Welcome to Wellness Checker
+        </h1>
+    </div>
+    <h1 id="name">Hello </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Apps</th>
+            <th>No of Hours</th>
+            <th>Safe Hours(week)</th>
+            <th>Are you safe</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Instagram</td>
+                <td id="instahours"></td>
+                <td>3</td>
+                <td id="instachecker"></td>
+            </tr>
+            <tr>
+                <td>youtube</td>
+                <td id="youtubehours"></td>
+                <td>3</td>
+                <td id="youtubechecker"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

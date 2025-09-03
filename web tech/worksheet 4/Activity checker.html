@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rootDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .centerDiv{
+            border: 1px solid whitesmoke;
+            width: 50%;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: white;
+            margin-bottom: 30px;
+        }
+        .inputDiv{
+            display: grid;
+            gap: 10px;
+            padding: 20px; 
+            font-family: Verdana, Geneva, Tahoma, sans-serif;        
+        }
+        .input{
+            background-color: gainsboro;
+            padding: 5px 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 5px 3px;
+        }
+        .btnDiv{
+            display: flex;
+            justify-content: end;
+        }
+        .btn{
+            font-size: larger;
+            padding: 7px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: antiquewhite;
+        }
+    </style>
+
+</head>
+<body style="background-color: azure;" >
+    <h2 style="text-align: center; color:rgb(146, 200, 53);font-size: xx-large;">Wellness Checker</h2>
+    <div class="rootDiv">
+    <div class="centerDiv">
+        <form id="form">
+            <fieldset style="margin-top: 10px; width: fit;border:none;border-bottom:4px solid gray;">
+                <legend style="border-radius:2px;background-color: rgb(180, 193, 198); padding: 5px 7px;">Personal Details</legend>
+            <div class="inputDiv">
+                <label for="">First Name</label>
+                <input class="input" type="text" required name="fname">
+            </div>
+            <div class="inputDiv">
+                <label for="">Last Name</label>
+                <input class="input" type="text" required name="lname">
+            </div>
+            <div class="inputDiv">
+                <label for="">College Name</label>
+                <input class="input" type="text" required name="college">
+            </div>
+            </fieldset>
+            <fieldset style="margin-top: 10px; width: fit;border:none;border-bottom:4px solid gray;">
+                <legend style="border-radius:2px;background-color: rgb(129, 177, 187); padding: 5px 7px;">Contact Details</legend>
+                 <div class="inputDiv">
+                <label for="">Phone No</label>
+                <input class="input" type="number" min="10" max="10" required name="phoneno">
+            </div>
+            <div class="inputDiv">
+                <label for="">Email</label>
+                <input class="input" type="email" required name="email">
+            </div>
+            </fieldset>
+            <fieldset style="margin-top: 10px; width: fit;border:none;">
+                <legend style="border-radius:2px;background-color: rgb(121, 200, 232); padding: 5px 7px;">Activity Details</legend>
+            <div class="inputDiv">
+                <label for="">No of Hours (Instagram)</label>
+                <input class="input" type="range" required name="instahours">
+            </div>
+            <div class="inputDiv">
+                <label for="">No of Hours (youtube)</label>
+                <input class="input" type="range" required name="youtubehours">
+            </div>
+            </fieldset>
+            <div class="btnDiv">
+            <input type="submit" class="btn"/>
+            </div>
+        </form>
+    </div>
+        <script>
+        document.getElementById("form").addEventListener("submit", function(e){
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value,key)=>{
+                data[key] = value
+            });
+            localStorage.setItem("formData",JSON.stringify(data));
+            window.location.href ="/web tech/worksheet 4/postform.html"
+        })
+    </script>
+</div>
+</body>
+</html>
