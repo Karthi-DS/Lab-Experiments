@@ -1,0 +1,42 @@
+body {
+  background-color: whitesmoke;
+}
+
+
+.gridCols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+#displayScreen {
+  grid-column: span 4;
+  background-color: #f0f0f0;
+  padding: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  height: 25px;
+}
+
+
+.gridCols > button {
+  height: 50px;
+  margin-top: 5px;
+  padding: 3px 5px;
+  background-color: beige;
+  font-weight: bold;
+}
+
+
+.gridCols > button:hover {
+  background-color: bisque;
+  font-weight: bolder;
+}
+
+
