@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <nav class="navbar">
+        <a href="home.html">Home</a>
+        <a href="userDetails.html">User Detail</a>
+        <a href="expense.html">Expense Made</a>
+        <a href="summary.html">Summary</a>
+    </nav>
+    <div class="formContainer">
+        <div class="disclaimer">
+            <h1>PLease Fill User Details First !</h1>
+        </div>
+        <form action="">
+            <div>
+                <label for="">Amount</label>
+                <input name="amount" type="number" pattern="[0-9]{1,10}">
+                <label for="">Category</label>
+                <select name="role" id="">
+                    <option value="food">Food</option>
+                    <option value="stationary">Stationary</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="travel">Travel</option>
+                </select>
+                <label for="">Date</label>
+                <input type="datetime-local" name="date" id="">
+                <div class="submitDiv">
+                <input type="submit" id="submit" value="Add"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="expense.js" defer></script>
+</body>
+</html>

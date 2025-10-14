@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <nav class="navbar">
+        <a href="home.html">Home</a>
+        <a href="userDetails.html">User Detail</a>
+        <a href="expense.html">Expense Made</a>
+        <a href="summary.html">Summary</a>
+    </nav>
+    <div class="formContainer">
+        <form action="">
+            <div>
+                <label for="">Name</label>
+                <input name="name" type="text" pattern="[a-zA-Z]{5,30}">
+                <label for="">Email</label>
+                <input name="email" type="email" name="" id="" pattern="[a-zA-Z0-9]+@[a-zA-Z]+(\.in|\.com)">
+                <label for="">Role</label>
+                <select name="role" id="">
+                    <option value="student">Student</option>
+                    <option value="worker">Worker</option>
+                    <option value="staff">Staff</option>
+                    <option value="employee">Employee</option>
+                </select>
+                <div class="submitDiv">
+                <input type="submit" id="submit" value=""></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="userDetails.js" defer></script>
+</body>
+</html>
