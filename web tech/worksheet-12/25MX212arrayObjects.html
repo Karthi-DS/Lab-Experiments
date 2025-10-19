@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25MX212 arrayObjects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #output {
+      white-space: pre-line;
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h2>Worksheet 12 - Array & Objects using Class (23MX18)</h2>
+
+  <button onclick="showStudentDetails()">1️⃣ Student Records</button>
+  <button onclick="showAverageMarks()">2️⃣ Average Marks</button>
+  <button onclick="showHighScorers()">3️⃣ Filter High Scorers</button>
+  <button onclick="showTopper()">4️⃣ Find Topper</button>
+  <button onclick="addDeptToEmployees()">5️⃣ Add Property Dynamically</button>
+  <button onclick="sortBooksByPrice()">6️⃣ Sort Objects</button>
+  <button onclick="showDiscountedPrices()">7️⃣ Class with Method</button>
+  <button onclick="updateBookPrice()">8️⃣ Update Specific Object</button>
+  <button onclick="removeLowestMarkStudent()">9️⃣ Remove Object</button>
+  <button onclick="showCars()">🔟 Custom Formatted Output</button>
+  <button onclick="arrayFromData()">11️⃣ Array.from()</button>
+  <button onclick="indexAssignment()">12️⃣ Index Assignment</button>
+
+  <div id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    // 1️⃣ Create and Display Student Records
+    class Student {
+      constructor(name, age, marks) {
+        this.name = name;
+        this.age = age;
+        this.marks = marks;
+      }
+      display() {
+        return `Name: ${this.name}, Age: ${this.age}, Marks: ${this.marks}`;
+      }
+    }
+
+    const studentsArr = [
+      new Student("X", 21, 100),
+      new Student("Y", 22, 99),
+      new Student("Z", 20, 90),
+      new Student("A", 23, 93),
+      new Student("B", 20, 91)
+    ];
+
+    function showStudentDetails() {
+      let res = "Student Details:\n";
+      studentsArr.forEach(s => res += s.display() + "\n");
+      output.innerText = res;
+    }
+
+    // 2️⃣ Calculate Average Marks
+    function showAverageMarks() {
+      const total = studentsArr.reduce((sum, s) => sum + s.marks, 0);
+      const avg = total / studentsArr.length;
+      output.innerText = `Average Marks of Students: ${avg.toFixed(2)}`;
+    }
+
+    // 3️⃣ Filter High Scorers
+    function showHighScorers() {
+      const high = studentsArr.filter(s => s.marks > 90);
+      let res = "Students with marks > 90:\n";
+      high.forEach(s => res += s.display() + "\n");
+      output.innerText = res;
+    }
+
+    // 4️⃣ Find the Topper
+    function showTopper() {
+      const topper = studentsArr.reduce((max, s) => s.marks > max.marks ? s : max);
+      output.innerText = `Topper:\n${topper.display()}`;
+    }
+
+    // 5️⃣ Add New Property Dynamically
+    class Employee {
+      constructor(id, name, salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+      }
+    }
+
+    const empArr = [
+      new Employee(1, "John", 50000),
+      new Employee(2, "Jane", 60000),
+      new Employee(3, "Smith", 55000)
+    ];
+
+    function addDeptToEmployees() {
+      empArr.forEach(e => e.department = "IT");
+      let res = "Employees with Department:\n";
+      empArr.forEach(e => res += `${e.id} ${e.name} ₹${e.salary} Dept: ${e.department}\n`);
+      output.innerText = res;
+    }
+
+    // 6️⃣ Sorting Objects
+    class Book {
+      constructor(title, price) {
+        this.title = title;
+        this.price = price;
+      }
+    }
+
+    const books = [
+      new Book("HTML", 400),
+      new Book("CSS", 250),
+      new Book("JavaScript", 500)
+    ];
+
+    function sortBooksByPrice() {
+      const sorted = [...books].sort((a, b) => a.price - b.price);
+      let res = "Books sorted by price:\n";
+      sorted.forEach(b => res += `${b.title}: ₹${b.price}\n`);
+      output.innerText = res;
+    }
+
+    // 7️⃣ Class with Method
+    class Product {
+      constructor(name, price) {
+        this.name = name;
+        this.price = price;
+      }
+      getDiscountedPrice(rate) {
+        return this.price - (this.price * rate / 100);
+      }
+    }
+
+    const products = [
+      new Product("Laptop", 60000),
+      new Product("Phone", 30000),
+      new Product("Tablet", 20000)
+    ];
+
+    function showDiscountedPrices() {
+      let res = "Discounted Prices (10% off):\n";
+      products.forEach(p => {
+        res += `${p.name}: ₹${p.getDiscountedPrice(10)}\n`;
+      });
+      output.innerText = res;
+    }
+
+    // 8️⃣ Update Specific Object
+    function updateBookPrice() {
+      const bookToUpdate = books.find(b => b.title === "CSS");
+      if (bookToUpdate) {
+        bookToUpdate.price = 300;
+      }
+      let res = "Updated Book Prices:\n";
+      books.forEach(b => res += `${b.title}: ₹${b.price}\n`);
+      output.innerText = res;
+    }
+
+    // 9️⃣ Remove an Object (lowest marks)
+    function removeLowestMarkStudent() {
+      const minMarks = Math.min(...studentsArr.map(s => s.marks));
+      const remaining = studentsArr.filter(s => s.marks !== minMarks);
+      let res = "After Removing Lowest Marks Student:\n";
+      remaining.forEach(s => res += s.display() + "\n");
+      output.innerText = res;
+    }
+
+    // 🔟 Display Custom Formatted Output
+    class Car {
+      constructor(brand, model, price) {
+        this.brand = brand;
+        this.model = model;
+        this.price = price;
+      }
+    }
+
+    const cars = [
+      new Car("Toyota", "Innova", 22),
+      new Car("Hyundai", "Creta", 18),
+      new Car("Tata", "Harrier", 20)
+    ];
+
+    function showCars() {
+      let res = "Car Details:\n";
+      cars.forEach(c => res += `The ${c.brand} ${c.model} costs ₹${c.price} lakh.\n`);
+      output.innerText = res;
+    }
+
+    // 11️⃣ Use of Array.from()
+    const rawData = [
+      ["Arun", 21, 88],
+      ["Kavi", 22, 95],
+      ["Ravi", 20, 90]
+    ];
+
+    function arrayFromData() {
+      const studObjs = Array.from(rawData, arr => new Student(arr[0], arr[1], arr[2]));
+      let res = "Array.from() created Student Objects:\n";
+      studObjs.forEach(s => res += s.display() + "\n");
+      output.innerText = res;
+    }
+
+    // 12️⃣ Index Assignment (No Push)
+    function indexAssignment() {
+      const emp = [];
+      emp[0] = new Employee(101, "Rahul", 50000);
+      emp[1] = new Employee(102, "Priya", 60000);
+      emp[2] = new Employee(103, "Karan", 55000);
+      let res = "Employees using Index Assignment:\n";
+      emp.forEach(e => res += `${e.id} ${e.name} ₹${e.salary}\n`);
+      output.innerText = res;
+    }
+  </script>
+</body>
+</html>
