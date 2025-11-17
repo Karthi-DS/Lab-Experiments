@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+
+<h2>Edit Student</h2>
+
+<form action="/students/update/<%= student._id %>" method="POST">
+    <label>Roll No:</label>
+    <input type="text" name="rollNo" value="<%= student.rollNo %>" required /><br><br>
+
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= student.name %>" required /><br><br>
+
+    <label>Guardian Phone:</label>
+    <input type="text" name="guardian_p_no" value="<%= student.guardian_p_no %>" required /><br><br>
+
+    <label>Skills</label>
+    <input type="text" name="skills" required /><br><br>
+    
+    <button type="submit">Update</button>
+</form>
+
+<a href="/students">Back</a>
+
+</body>
+</html>
