@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <center><h1>Add Product Details</h1></center>
+        <form action="<%=product? '/route/updateProduct/': '/route/postProduct' %>" method="post">
+            <label for="">ID</label><br>
+            <input type="number" value="<%=product ? product.id:'' %>" name="id"><br><br>
+            <label for="">Name</label><br>
+            <input type="text" value="<%=product ? product.name:'' %>" name="name"><br><br>
+            <label for="">Price</label><br>
+            <input type="number" value="<%=product ? product.price:'' %>" name="price"><br><br>
+            <label for="">Stock</label><br>
+            <input type="number" value="<%=product ? product.stock:'' %>" name="stock"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+</html>
