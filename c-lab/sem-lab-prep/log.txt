@@ -1,0 +1,8 @@
+Id: 3
+Salary: 400000
+Name: rahul
+Company: flipkart
+Id: 2
+Salary: 3
+Name: karthi
+Company: amazon
