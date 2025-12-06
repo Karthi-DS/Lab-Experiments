@@ -3,7 +3,7 @@ const studentModel = require("../models/studentModel");
 const getStudents = async (req, res) => {
     try {
         const students = await studentModel.find();
-        res.render("home", { data: students });
+        res.status(200).json({data:students});
     } catch (error) {
         res.status(500).send(error.message);
     }
